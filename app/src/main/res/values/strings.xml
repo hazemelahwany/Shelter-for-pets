@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Shelter for pets</string>
+
+    <!--Login Activity Strings-->
+    <string name="login_button">Sign in</string>
+    <string name="register_button">Do not have an account? Sign up</string>
+    <string name="forgot_password_button">Forgot password</string>
+    <string name="authentication_validation_toast">Please enter both email and password</string>
+    <string name="auth_failed_toast">Wrong email or password</string>
+    <string name="email_hint">email address</string>
+    <string name="password_hint">password</string>
+
+    <!--Sign up Activity Strings-->
+    <string name="registeration_form">Registeration Form:</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="confirm_password_hint">confirm password</string>
+    <string name="verify_email_toast">Account created successfully, an email was sent to you
+        to verify your account</string>
+    <string name="check_all_fields">Please enter all fields</string>
+    <string name="check_passwords">Password is not the same in the two fields</string>
+
+
+    <!--Forgot Password Activity-->
+    <string name="reset_password_button">Reset Password</string>
+    <string name="reset_password_text">Please enter your email address
+        below to reset your password</string>
+    <string name="check_email_entered_toast">Please enter a valid email address</string>
+    <string name="confirm_email_sent_toast">Email sent successfully please check your email</string>
+</resources>

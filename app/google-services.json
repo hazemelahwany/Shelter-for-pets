@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "968951340386",
+    "firebase_url": "https://shelterforpets-53007.firebaseio.com",
+    "project_id": "shelterforpets-53007",
+    "storage_bucket": "shelterforpets-53007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968951340386:android:73b636eaf4d43c5e",
+        "android_client_info": {
+          "package_name": "com.example.android.shelterforpets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968951340386-g7c6eek3t8ik04ddg3e27q7b0se8mhb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNZnwvqVxLpazTCHv24RzJrrybhEFaYyY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
