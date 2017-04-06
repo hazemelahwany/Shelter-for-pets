@@ -1,5 +1,6 @@
 package com.example.android.shelterforpets;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,8 +18,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import static com.example.android.shelterforpets.LogInActivity.mFirebaseAuth;
 
+
 public class SignUpActivity extends AppCompatActivity {
 
+    private static final int RC_SIGNIN = 1;
+    private static final int RC_EMAIL_VERIFY = 2;
     private EditText signupEmail;
     private EditText signupPassword;
     private EditText signupCinfirmPassword;
@@ -86,20 +90,11 @@ public class SignUpActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     if (user.isEmailVerified()) {
-                        // TODO: 06-04-2017 go to profile activity
-                        // TODO: 06-04-2017 remove after creating activity
-                        Toast.makeText(SignUpActivity.this, "Account created Successfully "
-                                ,Toast.LENGTH_SHORT).show();
+                        startActivityForResult(new Intent(SignUpActivity.this, MainActivity.class),
+                                RC_SIGNIN);
                     } else {
-                        user.sendEmailVerification()
-                               .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                   @Override
-                                   public void onComplete(@NonNull Task<Void> task) {
-                                       Toast.makeText(SignUpActivity.this,
-                                               R.string.verify_email_toast, Toast.LENGTH_LONG)
-                                               .show();
-                                   }
-                               });
+                        startActivityForResult(new Intent(SignUpActivity.this, LogInActivity.class),
+                                RC_EMAIL_VERIFY);
                     }
                 } else {
                     // User is signed out
@@ -119,5 +114,28 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGNIN) {
+            if (resultCode == RESULT_OK) {
+                Log.v("signin", "signed in");
+            } else if (resultCode == RESULT_CANCELED) {
+                Log.v("signin", "signed in cancelled");
+                finish();
+            }
+        } else if (requestCode == RC_EMAIL_VERIFY && resultCode == RESULT_OK) {
+            mFirebaseAuth.getCurrentUser().sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(SignUpActivity.this,
+                                    R.string.verify_email_toast, Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    });
+        }
     }
 }

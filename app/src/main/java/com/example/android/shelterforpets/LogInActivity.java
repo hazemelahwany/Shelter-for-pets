@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LogInActivity extends AppCompatActivity {
 
+    private static final int RC_SIGNIN = 1;
+
     private EditText loginEmail;
     private EditText loginPassword;
     private Button signin;
@@ -48,10 +50,8 @@ public class LogInActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     if (user.isEmailVerified()) {
-                        // TODO: 05-04-2017 go to profile activity
-                        // TODO: 06-04-2017 remove after creating activity
-                        Toast.makeText(LogInActivity.this, "Signed in Successfully ",
-                                Toast.LENGTH_SHORT).show();
+                        startActivityForResult(new Intent(LogInActivity.this, MainActivity.class),
+                                RC_SIGNIN);
                     } else {
                         user.sendEmailVerification()
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -128,6 +128,19 @@ public class LogInActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGNIN) {
+            if (resultCode == RESULT_OK) {
+                Log.v("signin", "signed in");
+            } else if (resultCode == RESULT_CANCELED) {
+                Log.v("signin", "signed in cancelled");
+                finish();
+            }
+        }
     }
 }
 

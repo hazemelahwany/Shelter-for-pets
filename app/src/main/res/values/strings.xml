@@ -26,4 +26,5 @@
         below to reset your password</string>
     <string name="check_email_entered_toast">Please enter a valid email address</string>
     <string name="confirm_email_sent_toast">Email sent successfully please check your email</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
