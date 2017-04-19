@@ -27,4 +27,29 @@
     <string name="check_email_entered_toast">Please enter a valid email address</string>
     <string name="confirm_email_sent_toast">Email sent successfully please check your email</string>
     <string name="title_activity_main">MainActivity</string>
+
+
+    <!--Admin Activity-->
+    <string name="add_admin_button">Add Admin</string>
+    <string name="add_shelter_button">Add Shelter</string>
+    <string name="admin_events_button">events</string>
+    <string name="admin_vets_button">vets</string>
+
+    <!--Add Admin Activity-->
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="admin_type_tv">Select Admin Type</string>
+
+    <!--Add Vet Activity-->
+    <string name="vet_name_hint">Vet Name</string>
+    <string name="dr_name_hint">DR Name</string>
+    <string name="vet_address_hint">Vet Address</string>
+    <string name="vet_telephone_hint">Vet Telephone</string>
+    <string name="vet_open_from_hint">Open From..</string>
+    <string name="vet_open_to_hint">Open To..</string>
+    <string name="add_vet_button">Add Vet</string>
+
+    <!--Add Shelter Activity-->
+    <string name="shelter_name_hint">Shelter Name</string>
+    <string name="shelter_address_description">Please choose your location from the map by long clicking and dragging the marker</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.android.shelterforpets;
+package com.example.android.shelterforpets.Authentication;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,13 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.android.shelterforpets.R;
+import com.example.android.shelterforpets.User.UserMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import static com.example.android.shelterforpets.LogInActivity.mFirebaseAuth;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -56,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
                         String email = signupEmail.getText().toString();
                         String password = signupPassword.getText().toString();
 
-                        mFirebaseAuth.createUserWithEmailAndPassword(email, password)
+                        LogInActivity.mFirebaseAuth.createUserWithEmailAndPassword(email, password)
                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                    @Override
                                    public void onComplete(@NonNull Task<AuthResult> task) {
@@ -90,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     if (user.isEmailVerified()) {
-                        startActivityForResult(new Intent(SignUpActivity.this, MainActivity.class),
+                        startActivityForResult(new Intent(SignUpActivity.this, UserMainActivity.class),
                                 RC_SIGNIN);
                     } else {
                         startActivityForResult(new Intent(SignUpActivity.this, LogInActivity.class),
@@ -107,13 +107,13 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+        LogInActivity.mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        LogInActivity.mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
     }
 
     @Override
@@ -127,7 +127,7 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         } else if (requestCode == RC_EMAIL_VERIFY && resultCode == RESULT_OK) {
-            mFirebaseAuth.getCurrentUser().sendEmailVerification()
+            LogInActivity.mFirebaseAuth.getCurrentUser().sendEmailVerification()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

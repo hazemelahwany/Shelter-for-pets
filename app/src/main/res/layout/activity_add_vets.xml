@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.shelterforpets.Admin.AddVets">
+
+    <EditText
+        android:id="@+id/vet_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/vet_name_hint"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/dr_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/dr_name_hint"
+        android:layout_below="@+id/vet_name"
+        android:layout_alignLeft="@+id/vet_name"
+        android:layout_alignStart="@+id/vet_name" />
+
+    <EditText
+        android:id="@+id/vet_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/vet_address_hint"
+        android:layout_below="@+id/dr_name"
+        android:layout_alignLeft="@+id/dr_name"
+        android:layout_alignStart="@+id/dr_name" />
+
+    <EditText
+        android:id="@+id/vet_telephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="@string/vet_telephone_hint"
+        android:layout_below="@+id/vet_address"
+        android:layout_alignLeft="@+id/vet_address"
+        android:layout_alignStart="@+id/vet_address"
+        android:layout_marginTop="31dp" />
+
+    <EditText
+        android:id="@+id/vet_open_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="@string/vet_open_from_hint"
+        android:layout_below="@+id/vet_telephone"
+        android:layout_alignLeft="@+id/vet_telephone"
+        android:layout_alignStart="@+id/vet_telephone" />
+
+    <EditText
+        android:id="@+id/vet_open_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="@string/vet_open_to_hint"
+        android:layout_below="@+id/vet_open_from"
+        android:layout_alignLeft="@+id/vet_open_from"
+        android:layout_alignStart="@+id/vet_open_from"
+        android:layout_marginTop="30dp" />
+
+    <Button
+        android:id="@+id/add_vet_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:text="@string/add_vet_button" />
+</RelativeLayout>

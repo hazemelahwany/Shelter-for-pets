@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="admin_types_array">
+        <item>Normal</item>
+        <item>Super</item>
+    </string-array>
+</resources>

@@ -1,4 +1,4 @@
-package com.example.android.shelterforpets;
+package com.example.android.shelterforpets.Authentication;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,11 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.shelterforpets.Admin.AdminActivity;
+import com.example.android.shelterforpets.R;
+import com.example.android.shelterforpets.User.UserMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -29,6 +37,12 @@ public class LogInActivity extends AppCompatActivity {
 
     public static FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference adminsDatabase;
+    private DatabaseReference sheltersDatabase;
+
+    boolean adminFlag = false;
+    boolean shelterFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +50,9 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        adminsDatabase = mFirebaseDatabase.getReference().child("admins");
+        sheltersDatabase = mFirebaseDatabase.getReference().child("shelters");
 
         loginEmail = (EditText) findViewById(R.id.login_email);
         loginPassword = (EditText) findViewById(R.id.login_password);
@@ -49,20 +66,33 @@ public class LogInActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    if (user.isEmailVerified()) {
-                        startActivityForResult(new Intent(LogInActivity.this, MainActivity.class),
-                                RC_SIGNIN);
-                    } else {
-                        user.sendEmailVerification()
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(LogInActivity.this,
-                                                R.string.verify_email_toast, Toast.LENGTH_SHORT)
-                                                .show();
-                                    }
-                                });
-                    }
+                    checkType(user);
+//                    if () {
+//                        startActivityForResult(new Intent(LogInActivity.this, AdminActivity.class),
+//                                RC_SIGNIN);
+//
+//                    } else if (checkIfShelter(user)) {
+//
+//
+//                    } else {
+//
+//                        if (user.isEmailVerified()) {
+//
+//                            startActivityForResult(new Intent(LogInActivity.this, UserMainActivity.class),
+//                                    RC_SIGNIN);
+//
+//                        } else {
+//                            user.sendEmailVerification()
+//                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            Toast.makeText(LogInActivity.this,
+//                                                    R.string.verify_email_toast, Toast.LENGTH_SHORT)
+//                                                    .show();
+//                                        }
+//                                    });
+//                        }
+//                    }
                 } else {
                     // User is signed out
                     Log.d("Authentication", "onAuthStateChanged:signed_out");
@@ -118,6 +148,7 @@ public class LogInActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -142,5 +173,49 @@ public class LogInActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void checkType(final FirebaseUser user) {
+        adminsDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot admin : dataSnapshot.getChildren()) {
+                    if (admin.getKey().equals(user.getUid())) {
+                        adminFlag = true;
+                        startActivityForResult(new Intent(LogInActivity.this, AdminActivity.class),
+                                RC_SIGNIN);
+                        break;
+                    }
+                }
+                if (!adminFlag) {
+                    if (user.isEmailVerified()) {
+
+                        startActivityForResult(new Intent(LogInActivity.this, UserMainActivity.class),
+                                RC_SIGNIN);
+
+                    } else {
+                        user.sendEmailVerification()
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(LogInActivity.this,
+                                                R.string.verify_email_toast, Toast.LENGTH_SHORT)
+                                                .show();
+                                    }
+                                });
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+    }
+
+    private boolean checkIfShelter(FirebaseUser user) {
+        return false;
+    }
+
 }
 
