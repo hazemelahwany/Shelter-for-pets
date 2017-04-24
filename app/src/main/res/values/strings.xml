@@ -51,5 +51,7 @@
 
     <!--Add Shelter Activity-->
     <string name="shelter_name_hint">Shelter Name</string>
-    <string name="shelter_address_description">Please choose your location from the map by long clicking and dragging the marker</string>
+
+    <!--Select Shelter Location Activity-->
+    <string name="next_button">Next</string>
 </resources>

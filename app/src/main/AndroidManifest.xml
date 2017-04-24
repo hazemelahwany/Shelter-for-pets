@@ -17,18 +17,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <!--
-             The API key for Google Maps-based APIs.
-        -->
+        <!--              The API key for Google Maps-based APIs. -->
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="AIzaSyDzBzFd_gTCBUFk__e4Q4i5pB9pVJp-vwQ"/> -->
 
         <activity android:name=".Authentication.LogInActivity">
             <intent-filter>
@@ -46,7 +47,8 @@
         <activity android:name=".Admin.AddShelters" />
         <activity android:name=".Admin.AddAdmins" />
         <activity android:name=".Admin.AddVets" />
-        <activity android:name=".Admin.AddEvents"></activity>
+        <activity android:name=".Admin.AddEvents" />
+        <activity android:name=".Admin.SelectShelterLocation"></activity>
     </application>
 
 </manifest>

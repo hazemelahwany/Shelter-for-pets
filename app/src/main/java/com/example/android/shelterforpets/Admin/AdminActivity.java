@@ -33,7 +33,7 @@ public class AdminActivity extends AppCompatActivity {
         addShelters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this, AddShelters.class));
+                startActivity(new Intent(AdminActivity.this, SelectShelterLocation.class));
             }
         });
 
