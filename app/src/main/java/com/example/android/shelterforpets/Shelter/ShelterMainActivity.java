@@ -1,4 +1,4 @@
-package com.example.android.shelterforpets.Admin;
+package com.example.android.shelterforpets.Shelter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -16,53 +16,33 @@ import com.google.firebase.auth.FirebaseUser;
 
 import static com.example.android.shelterforpets.Authentication.LogInActivity.mFirebaseAuth;
 
-
-public class AdminActivity extends AppCompatActivity {
+public class ShelterMainActivity extends AppCompatActivity {
 
     FirebaseAuth.AuthStateListener mAuthStateListener;
+    String userID;
 
     private static final int RC_SIGNIN = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_shelter_main);
 
-        Button addAdmins = (Button) findViewById(R.id.add_admin);
-        Button addShelters = (Button) findViewById(R.id.add_shelter);
-        Button vets = (Button) findViewById(R.id.admin_vets);
-        Button events = (Button) findViewById(R.id.admin_events);
-        Button signout = (Button) findViewById(R.id.admin_sign_out);
+        // TODO: 25-04-2017 lsa hyt3mal
+        Button viewEvents = (Button) findViewById(R.id.shelter_view_events);
 
-        addAdmins.setOnClickListener(new View.OnClickListener() {
+        Button viewRequests = (Button) findViewById(R.id.shelter_view_request);
+        viewRequests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this, AddAdmins.class));
+                Intent i = new Intent(ShelterMainActivity.this, ReceivedRequests.class);
+                i.putExtra("user", userID);
+                startActivity(i);
             }
         });
 
-        addShelters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this, SelectShelterLocation.class));
-            }
-        });
-
-        vets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this, AddVets.class));
-            }
-        });
-
-        events.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this, AddEvents.class));
-            }
-        });
-
-        signout.setOnClickListener(new View.OnClickListener() {
+        Button signOut = (Button) findViewById(R.id.shelter_sign_out);
+        signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LogInActivity.mFirebaseAuth.signOut();
@@ -74,13 +54,15 @@ public class AdminActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = mFirebaseAuth.getCurrentUser();
                 if (user != null) {
+
+                    userID = user.getUid();
                     // User is signed in
-                        Toast.makeText(AdminActivity.this, "User signed in", Toast.LENGTH_SHORT)
-                                .show();
+                    Toast.makeText(ShelterMainActivity.this, "User signed in", Toast.LENGTH_SHORT)
+                            .show();
                 } else {
                     // User is signed out
                     Log.d("Authentication", "onAuthStateChanged:signed_out");
-                    startActivityForResult(new Intent(AdminActivity.this, LogInActivity.class),
+                    startActivityForResult(new Intent(ShelterMainActivity.this, LogInActivity.class),
                             RC_SIGNIN);
                 }
             }

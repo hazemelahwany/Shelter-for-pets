@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.android.shelterforpets.Admin.AdminActivity;
 import com.example.android.shelterforpets.R;
+import com.example.android.shelterforpets.Shelter.ShelterMainActivity;
 import com.example.android.shelterforpets.User.UserMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,7 +53,7 @@ public class LogInActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         adminsDatabase = mFirebaseDatabase.getReference().child("admins");
-        sheltersDatabase = mFirebaseDatabase.getReference().child("shelters");
+        sheltersDatabase = mFirebaseDatabase.getReference().child("Shelters");
 
         loginEmail = (EditText) findViewById(R.id.login_email);
         loginPassword = (EditText) findViewById(R.id.login_password);
@@ -187,22 +188,42 @@ public class LogInActivity extends AppCompatActivity {
                     }
                 }
                 if (!adminFlag) {
-                    if (user.isEmailVerified()) {
+                    sheltersDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot shelter : dataSnapshot.getChildren()) {
+                                if (shelter.getKey().equals(user.getUid())) {
+                                    shelterFlag = true;
+                                    startActivityForResult(new Intent(LogInActivity.this, ShelterMainActivity.class),
+                                        RC_SIGNIN);
+                                    break;
+                                }
+                            }
+                            if (!shelterFlag) {
+                                if (user.isEmailVerified()) {
 
-                        startActivityForResult(new Intent(LogInActivity.this, UserMainActivity.class),
-                                RC_SIGNIN);
+                                    startActivityForResult(new Intent(LogInActivity.this, UserMainActivity.class),
+                                            RC_SIGNIN);
 
-                    } else {
-                        user.sendEmailVerification()
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(LogInActivity.this,
-                                                R.string.verify_email_toast, Toast.LENGTH_SHORT)
-                                                .show();
-                                    }
-                                });
-                    }
+                                } else {
+                                    user.sendEmailVerification()
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Toast.makeText(LogInActivity.this,
+                                                            R.string.verify_email_toast, Toast.LENGTH_SHORT)
+                                                            .show();
+                                                }
+                                            });
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
             @Override
@@ -212,10 +233,4 @@ public class LogInActivity extends AppCompatActivity {
 
         });
     }
-
-    private boolean checkIfShelter(FirebaseUser user) {
-        return false;
-    }
-
 }
-

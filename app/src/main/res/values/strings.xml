@@ -58,4 +58,7 @@
     <!--User Main Activity-->
     <string name="show_events_button">Show Events</string>
     <string name="vets_directory">Show vets</string>
+
+    <!--Shelter Main Activity-->
+    <string name="view_requests">View Requests</string>
 </resources>

@@ -21,7 +21,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <!--              The API key for Google Maps-based APIs. -->
+        <!-- The API key for Google Maps-based APIs. -->
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -48,7 +48,9 @@
         <activity android:name=".Admin.AddAdmins" />
         <activity android:name=".Admin.AddVets" />
         <activity android:name=".Admin.AddEvents" />
-        <activity android:name=".Admin.SelectShelterLocation"></activity>
+        <activity android:name=".Admin.SelectShelterLocation" />
+        <activity android:name=".Shelter.ShelterMainActivity" />
+        <activity android:name=".Shelter.ReceivedRequests"></activity>
     </application>
 
 </manifest>
