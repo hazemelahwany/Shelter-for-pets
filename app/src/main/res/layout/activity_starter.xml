@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.shelterforpets.Authentication.StarterActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/dog1"
+        android:adjustViewBounds="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/app_logo"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:id="@+id/imageView6" />
+
+        <ImageButton
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:src="@drawable/signin_button"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="115dp"
+            android:id="@+id/starter_signin"
+            android:adjustViewBounds="true"/>
+
+        <ImageButton
+            android:id="@+id/starter_signup"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:src="@drawable/signup_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/starter_signin"
+            android:layout_alignStart="@+id/starter_signin"
+            android:layout_marginBottom="40dp"
+            android:adjustViewBounds="true"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

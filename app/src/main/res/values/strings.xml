@@ -4,7 +4,7 @@
     <!--Login Activity Strings-->
     <string name="login_button">Sign in</string>
     <string name="register_button">Do not have an account? Sign up</string>
-    <string name="forgot_password_button">Forgot password</string>
+    <string name="forgot_password_button">Forgot Password?</string>
     <string name="authentication_validation_toast">Please enter both email and password</string>
     <string name="auth_failed_toast">Wrong email or password</string>
     <string name="email_hint">email address</string>

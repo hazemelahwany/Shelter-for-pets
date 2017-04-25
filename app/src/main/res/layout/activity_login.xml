@@ -3,18 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.android.shelterforpets.Authentication.LogInActivity"
-    android:background="#FFFFFF">
+    android:background="@drawable/backgrouand_with_filter">
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/app_logo"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
         android:id="@+id/imageView"
-        android:layout_margin="8dp"/>
+        android:layout_marginTop="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/login_email"
@@ -23,9 +22,9 @@
         android:ems="10"
         android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp" />
+        android:layout_marginTop="151dp"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/login_password"
@@ -39,36 +38,28 @@
         android:hint="@string/password_hint"
         android:inputType="textPassword" />
 
-    <Button
+    <ImageButton
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_button"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/signin_activity_button"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
         android:layout_below="@+id/login_password"
-        android:layout_alignLeft="@+id/login_password"
-        android:layout_alignStart="@+id/login_password"
-        android:layout_marginTop="14dp"
-        android:layout_alignRight="@+id/login_password"
-        android:layout_alignEnd="@+id/login_password" />
+        android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register_button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgot_password_button"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:textColor="@android:color/black"
         android:layout_below="@+id/login_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:clickable="true" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

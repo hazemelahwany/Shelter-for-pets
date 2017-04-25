@@ -1,5 +1,6 @@
 package com.example.android.shelterforpets.Authentication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,15 +34,15 @@ public class LogInActivity extends AppCompatActivity {
 
     private EditText loginEmail;
     private EditText loginPassword;
-    private Button signin;
+    private ImageButton signin;
     private TextView forgotPassword;
-    private TextView signup;
 
     public static FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference adminsDatabase;
     private DatabaseReference sheltersDatabase;
+    ProgressDialog progress;
 
     boolean adminFlag = false;
     boolean shelterFlag;
@@ -57,9 +59,9 @@ public class LogInActivity extends AppCompatActivity {
 
         loginEmail = (EditText) findViewById(R.id.login_email);
         loginPassword = (EditText) findViewById(R.id.login_password);
-        signin = (Button) findViewById(R.id.login_button);
+        signin = (ImageButton) findViewById(R.id.login_button);
         forgotPassword = (TextView) findViewById(R.id.forgot_password);
-        signup = (TextView) findViewById(R.id.register);
+
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -68,34 +70,9 @@ public class LogInActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     checkType(user);
-//                    if () {
-//                        startActivityForResult(new Intent(LogInActivity.this, AdminActivity.class),
-//                                RC_SIGNIN);
-//
-//                    } else if (checkIfShelter(user)) {
-//
-//
-//                    } else {
-//
-//                        if (user.isEmailVerified()) {
-//
-//                            startActivityForResult(new Intent(LogInActivity.this, UserMainActivity.class),
-//                                    RC_SIGNIN);
-//
-//                        } else {
-//                            user.sendEmailVerification()
-//                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<Void> task) {
-//                                            Toast.makeText(LogInActivity.this,
-//                                                    R.string.verify_email_toast, Toast.LENGTH_SHORT)
-//                                                    .show();
-//                                        }
-//                                    });
-//                        }
-//                    }
                 } else {
                     // User is signed out
+                    progress.dismiss();
                     Log.d("Authentication", "onAuthStateChanged:signed_out");
                 }
                 // ...
@@ -110,6 +87,8 @@ public class LogInActivity extends AppCompatActivity {
                     Toast.makeText(LogInActivity.this, R.string.authentication_validation_toast,
                             Toast.LENGTH_LONG).show();
                 } else {
+                    progress = ProgressDialog.show(LogInActivity.this, "Logging In",
+                            "Please Wait", true);
                     String email = loginEmail.getText().toString();
                     String password = loginPassword.getText().toString();
                     mFirebaseAuth.signInWithEmailAndPassword(email, password)
@@ -117,7 +96,7 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     Log.d("auth_status", "signInWithEmail:onComplete:" + task.isSuccessful());
-
+                                    progress.dismiss();
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
@@ -140,19 +119,14 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(LogInActivity.this, SignUpActivity.class);
-                LogInActivity.this.startActivity(i);
-            }
-        });
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
+        progress = ProgressDialog.show(LogInActivity.this, "Logging In",
+                "Please Wait", true);
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
@@ -182,6 +156,7 @@ public class LogInActivity extends AppCompatActivity {
                 for (DataSnapshot admin : dataSnapshot.getChildren()) {
                     if (admin.getKey().equals(user.getUid())) {
                         adminFlag = true;
+                        progress.dismiss();
                         startActivityForResult(new Intent(LogInActivity.this, AdminActivity.class),
                                 RC_SIGNIN);
                         break;
@@ -194,6 +169,7 @@ public class LogInActivity extends AppCompatActivity {
                             for (DataSnapshot shelter : dataSnapshot.getChildren()) {
                                 if (shelter.getKey().equals(user.getUid())) {
                                     shelterFlag = true;
+                                    progress.dismiss();
                                     startActivityForResult(new Intent(LogInActivity.this, ShelterMainActivity.class),
                                         RC_SIGNIN);
                                     break;
@@ -201,7 +177,7 @@ public class LogInActivity extends AppCompatActivity {
                             }
                             if (!shelterFlag) {
                                 if (user.isEmailVerified()) {
-
+                                    progress.dismiss();
                                     startActivityForResult(new Intent(LogInActivity.this, UserMainActivity.class),
                                             RC_SIGNIN);
 
@@ -210,6 +186,7 @@ public class LogInActivity extends AppCompatActivity {
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
+                                                    progress.dismiss();
                                                     Toast.makeText(LogInActivity.this,
                                                             R.string.verify_email_toast, Toast.LENGTH_SHORT)
                                                             .show();

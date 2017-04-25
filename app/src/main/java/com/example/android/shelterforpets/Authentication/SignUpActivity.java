@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.android.shelterforpets.DatabaseObjects.User;
@@ -31,7 +32,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText signupEmail;
     private EditText signupPassword;
     private EditText signupCinfirmPassword;
-    private Button signupButton;
+    private ImageButton signupButton;
+    FirebaseAuth firebaseAuth;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private DatabaseReference usersDatabase;
@@ -41,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
         usersDatabase = mFirebaseDatabase.getReference().child("Users");
 
@@ -49,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
         signupEmail = (EditText) findViewById(R.id.signup_email);
         signupPassword = (EditText) findViewById(R.id.signup_password);
         signupCinfirmPassword = (EditText) findViewById(R.id.signup_confirm_password);
-        signupButton = (Button) findViewById(R.id.signup_button);
+        signupButton = (ImageButton) findViewById(R.id.signup_button);
 
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +70,7 @@ public class SignUpActivity extends AppCompatActivity {
                         String email = signupEmail.getText().toString();
                         String password = signupPassword.getText().toString();
 
-                        LogInActivity.mFirebaseAuth.createUserWithEmailAndPassword(email, password)
+                        firebaseAuth.createUserWithEmailAndPassword(email, password)
                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                    @Override
                                    public void onComplete(@NonNull Task<AuthResult> task) {
@@ -124,13 +127,13 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        LogInActivity.mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+        firebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogInActivity.mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        firebaseAuth.removeAuthStateListener(mAuthStateListener);
     }
 
     @Override
@@ -144,7 +147,7 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         } else if (requestCode == RC_EMAIL_VERIFY && resultCode == RESULT_OK) {
-            LogInActivity.mFirebaseAuth.getCurrentUser().sendEmailVerification()
+            firebaseAuth.getCurrentUser().sendEmailVerification()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

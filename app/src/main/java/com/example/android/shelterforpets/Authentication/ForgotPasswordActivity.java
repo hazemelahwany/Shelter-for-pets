@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.android.shelterforpets.R;
@@ -17,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     private EditText resetPasswordEmail;
-    private Button resetPasswordButton;
+    private ImageButton resetPasswordButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_password);
 
         resetPasswordEmail = (EditText) findViewById(R.id.forgot_password_email);
-        resetPasswordButton = (Button) findViewById(R.id.reset_password_button);
+        resetPasswordButton = (ImageButton) findViewById(R.id.reset_password_button);
 
         resetPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override

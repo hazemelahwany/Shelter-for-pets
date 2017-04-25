@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.shelterforpets">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -11,7 +10,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -33,26 +32,40 @@
         <!-- android:name="com.google.android.geo.API_KEY" -->
         <!-- android:value="AIzaSyDzBzFd_gTCBUFk__e4Q4i5pB9pVJp-vwQ"/> -->
 
-        <activity android:name=".Authentication.LogInActivity">
+        <activity android:name=".Authentication.LogInActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Authentication.ForgotPasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Authentication.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".User.UserMainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.AdminActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.AddShelters"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.AddAdmins"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.AddVets"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.AddEvents"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.SelectShelterLocation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Shelter.ShelterMainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Shelter.ReceivedRequests"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Authentication.StarterActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".Authentication.ForgotPasswordActivity" />
-        <activity android:name=".Authentication.SignUpActivity" />
-        <activity
-            android:name=".User.UserMainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".Admin.AdminActivity" />
-        <activity android:name=".Admin.AddShelters" />
-        <activity android:name=".Admin.AddAdmins" />
-        <activity android:name=".Admin.AddVets" />
-        <activity android:name=".Admin.AddEvents" />
-        <activity android:name=".Admin.SelectShelterLocation" />
-        <activity android:name=".Shelter.ShelterMainActivity" />
-        <activity android:name=".Shelter.ReceivedRequests"></activity>
     </application>
 
 </manifest>
