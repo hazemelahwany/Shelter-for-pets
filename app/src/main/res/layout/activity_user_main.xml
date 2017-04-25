@@ -27,10 +27,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/taken_pic"
-        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -44,5 +44,26 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="38dp" />
+
+    <Button
+        android:id="@+id/user_show_events"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_events_button"
+        android:layout_above="@+id/capture_animal"
+        android:layout_toLeftOf="@+id/signout_button"
+        android:layout_toStartOf="@+id/signout_button"
+        android:layout_marginBottom="11dp" />
+
+    <Button
+        android:id="@+id/user_show_vets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/capture_animal"
+        android:layout_alignRight="@+id/capture_animal"
+        android:layout_alignTop="@+id/user_show_events"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:text="@string/vets_directory" />
 
 </RelativeLayout>

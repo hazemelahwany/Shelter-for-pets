@@ -48,4 +48,12 @@
         android:layout_marginEnd="11dp"
         android:layout_marginRight="11dp"
         android:text="@string/admin_vets_button" />
+
+    <Button
+        android:id="@+id/admin_sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign out"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

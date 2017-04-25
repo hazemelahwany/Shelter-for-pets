@@ -54,4 +54,8 @@
 
     <!--Select Shelter Location Activity-->
     <string name="next_button">Next</string>
+
+    <!--User Main Activity-->
+    <string name="show_events_button">Show Events</string>
+    <string name="vets_directory">Show vets</string>
 </resources>
