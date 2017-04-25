@@ -58,7 +58,18 @@
     <!--User Main Activity-->
     <string name="show_events_button">Show Events</string>
     <string name="vets_directory">Show vets</string>
+    <string name="show_users">Show Users</string>
+    <string name="user_profile">Profile</string>
 
     <!--Shelter Main Activity-->
     <string name="view_requests">View Requests</string>
+
+    <!--Add Events Activity-->
+    <string name="event_name">Event Name</string>
+    <string name="event_description">Event Description</string>
+    <string name="event_date">Event Date</string>
+    <string name="event_time">Event Time</string>
+    <string name="add_events_button">Add Event</string>
+    <string name="choose_event_photo">Choose Event Photo</string>
+
 </resources>

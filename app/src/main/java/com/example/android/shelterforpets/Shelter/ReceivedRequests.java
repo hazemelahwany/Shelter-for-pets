@@ -8,10 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.example.android.shelterforpets.Authentication.LogInActivity;
-import com.example.android.shelterforpets.DatabaseObjects.LostPet;
 import com.example.android.shelterforpets.R;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

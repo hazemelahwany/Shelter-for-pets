@@ -6,16 +6,14 @@ public class Event {
     private String eventName;
     private String eventDescription;
     private String eventDate;
-    private String eventFromTime;
-    private String eventToTime;
+    private String eventTime;
     private String eventPhoto;
 
-    public Event(String eventName, String eventDescription, String eventDate, String eventFromTime, String eventToTime, String eventPhoto) {
+    public Event(String eventName, String eventDescription, String eventDate, String eventTime, String eventPhoto) {
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.eventDate = eventDate;
-        this.eventFromTime = eventFromTime;
-        this.eventToTime = eventToTime;
+        this.eventTime = eventTime;
         this.eventPhoto = eventPhoto;
     }
 
@@ -43,20 +41,12 @@ public class Event {
         this.eventDate = eventDate;
     }
 
-    public String getEventFromTime() {
-        return eventFromTime;
+    public String getEventTime() {
+        return eventTime;
     }
 
-    public void setEventFromTime(String eventFromTime) {
-        this.eventFromTime = eventFromTime;
-    }
-
-    public String getEventToTime() {
-        return eventToTime;
-    }
-
-    public void setEventToTime(String eventToTime) {
-        this.eventToTime = eventToTime;
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
     }
 
     public String getEventPhoto() {

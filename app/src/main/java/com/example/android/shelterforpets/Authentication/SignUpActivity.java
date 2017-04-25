@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.android.shelterforpets.DatabaseObjects.User;
 import com.example.android.shelterforpets.R;
 import com.example.android.shelterforpets.User.UserMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,25 +18,34 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class SignUpActivity extends AppCompatActivity {
 
     private static final int RC_SIGNIN = 1;
     private static final int RC_EMAIL_VERIFY = 2;
+    private EditText signUpFirstName;
+    private EditText signUpLastName;
     private EditText signupEmail;
     private EditText signupPassword;
     private EditText signupCinfirmPassword;
     private Button signupButton;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private DatabaseReference usersDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+        usersDatabase = mFirebaseDatabase.getReference().child("Users");
 
+        signUpFirstName = (EditText) findViewById(R.id.signup_first_name);
+        signUpLastName = (EditText) findViewById(R.id.signup_last_name);
         signupEmail = (EditText) findViewById(R.id.signup_email);
         signupPassword = (EditText) findViewById(R.id.signup_password);
         signupCinfirmPassword = (EditText) findViewById(R.id.signup_confirm_password);
@@ -46,7 +56,8 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (signupEmail.getText().toString().equals("") || signupPassword.getText()
                         .toString().equals("")|| signupCinfirmPassword.getText().toString()
-                        .equals("")) {
+                        .equals("") || signUpFirstName.getText().toString().equals("")
+                        || signUpLastName.getText().toString().equals("")) {
                     Toast.makeText(SignUpActivity.this, R.string.check_all_fields,
                             Toast.LENGTH_LONG).show();
                 } else {
@@ -62,6 +73,12 @@ public class SignUpActivity extends AppCompatActivity {
                                    public void onComplete(@NonNull Task<AuthResult> task) {
                                        Log.d("auth_status", "createUserWithEmail:onComplete:"
                                                + task.isSuccessful());
+                                       if (task.isSuccessful()) {
+                                           FirebaseUser user = task.getResult().getUser();
+                                           User u = new User(signUpFirstName.getText().toString(),
+                                                   signUpLastName.getText().toString());
+                                           usersDatabase.child(user.getUid()).setValue(u);
+                                       }
 
                                        // If sign in fails, display a message to the user. If sign
                                        // in succeeds the auth state listener will be notified and

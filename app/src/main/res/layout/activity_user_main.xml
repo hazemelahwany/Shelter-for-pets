@@ -66,4 +66,22 @@
         android:layout_marginRight="25dp"
         android:text="@string/vets_directory" />
 
+    <Button
+        android:id="@+id/user_show_users"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/user_show_events"
+        android:layout_toEndOf="@+id/location_tv"
+        android:layout_toRightOf="@+id/location_tv"
+        android:text="@string/show_users" />
+
+    <Button
+        android:id="@+id/user_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_profile"
+        android:layout_above="@+id/user_show_vets"
+        android:layout_alignRight="@+id/user_show_vets"
+        android:layout_alignEnd="@+id/user_show_vets" />
+
 </RelativeLayout>
