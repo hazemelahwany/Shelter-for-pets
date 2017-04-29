@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.Admin.AddVets">
+    tools:context="com.example.android.shelterforpets.Admin.AddVets"
+    android:background="@drawable/backgrouand_with_filter">
 
     <EditText
         android:id="@+id/vet_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/vet_name_hint"
@@ -20,7 +21,7 @@
         android:id="@+id/dr_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/dr_name_hint"
@@ -32,7 +33,7 @@
         android:id="@+id/vet_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/vet_address_hint"
@@ -50,13 +51,13 @@
         android:layout_below="@+id/vet_address"
         android:layout_alignLeft="@+id/vet_address"
         android:layout_alignStart="@+id/vet_address"
-        android:layout_marginTop="31dp" />
+        android:layout_marginTop="15dp" />
 
     <EditText
         android:id="@+id/vet_open_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="time"
         android:hint="@string/vet_open_from_hint"
@@ -71,17 +72,21 @@
         android:ems="10"
         android:inputType="time"
         android:hint="@string/vet_open_to_hint"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/vet_open_from"
         android:layout_alignLeft="@+id/vet_open_from"
-        android:layout_alignStart="@+id/vet_open_from"
-        android:layout_marginTop="30dp" />
+        android:layout_alignStart="@+id/vet_open_from" />
 
-    <Button
+    <ImageButton
         android:id="@+id/add_vet_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp"
-        android:text="@string/add_vet_button" />
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="@string/add_vet_button"
+        android:layout_marginTop="23dp"
+        android:src="@drawable/add_vet_button"
+        android:background="@android:color/transparent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/vet_open_to"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

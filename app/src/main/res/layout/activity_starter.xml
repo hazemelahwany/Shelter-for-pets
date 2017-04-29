@@ -33,7 +33,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="115dp"
             android:id="@+id/starter_signin"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"/>
 
         <ImageButton
             android:id="@+id/starter_signup"
@@ -44,7 +46,9 @@
             android:layout_alignLeft="@+id/starter_signin"
             android:layout_alignStart="@+id/starter_signin"
             android:layout_marginBottom="40dp"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"/>
 
     </RelativeLayout>
 

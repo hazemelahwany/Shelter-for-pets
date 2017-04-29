@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.Admin.AddEvents">
+    tools:context="com.example.android.shelterforpets.Admin.AddEvents"
+    android:background="@drawable/backgrouand_with_filter">
 
     <EditText
         android:id="@+id/event_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="76dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/event_name"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -56,21 +57,29 @@
         android:inputType="time" />
 
 
-    <Button
+    <ImageButton
         android:id="@+id/add_event"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
         android:text="@string/add_events_button"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/event_choose_photo"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" />
+        android:src="@drawable/add_event"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/event_choose_photo"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/event_time"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:text="@string/choose_event_photo" />
+        android:text="@string/choose_event_photo"
+        android:src="@drawable/choose_event_photo"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"/>
 </RelativeLayout>

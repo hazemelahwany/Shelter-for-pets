@@ -3,57 +3,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.Admin.AdminActivity">
+    tools:context="com.example.android.shelterforpets.Admin.AdminActivity"
+    android:background="@drawable/dog_with_filter">
 
-    <Button
+    <ImageButton
         android:id="@+id/add_admin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="44dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginStart="64dp"
-        android:text="@string/add_admin_button" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="@string/add_admin_button"
+        android:src="@drawable/add_admin"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/admin_events"
+        android:layout_alignLeft="@+id/add_shelter"
+        android:layout_alignStart="@+id/add_shelter"
+        android:layout_marginTop="27dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/add_shelter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/add_admin"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:text="@string/add_shelter_button" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="@string/add_shelter_button"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:src="@drawable/add_shelter"
+        android:layout_marginTop="145dp"
+        android:layout_marginLeft="66dp"
+        android:layout_marginStart="66dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <Button
+    <ImageButton
         android:id="@+id/admin_events"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/add_admin"
-        android:layout_alignEnd="@+id/add_admin"
-        android:layout_alignRight="@+id/add_admin"
-        android:layout_marginBottom="47dp"
-        android:text="@string/admin_events_button" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="@string/admin_events_button"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:src="@drawable/event"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:layout_alignTop="@+id/add_shelter"
+        android:layout_toRightOf="@+id/add_admin"
+        android:layout_toEndOf="@+id/add_admin" />
 
-    <Button
+    <ImageButton
         android:id="@+id/admin_vets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/add_shelter"
-        android:layout_alignRight="@+id/add_shelter"
-        android:layout_alignTop="@+id/admin_events"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
-        android:text="@string/admin_vets_button" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="@string/admin_vets_button"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:src="@drawable/vets"
+        android:layout_alignTop="@+id/add_admin"
+        android:layout_alignLeft="@+id/admin_events"
+        android:layout_alignStart="@+id/admin_events" />
 
-    <Button
-        android:id="@+id/admin_sign_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign out"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>

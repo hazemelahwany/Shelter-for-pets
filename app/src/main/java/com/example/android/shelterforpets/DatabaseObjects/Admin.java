@@ -5,12 +5,10 @@ public class Admin {
 
     private String firstName;
     private String lastName;
-    private boolean superUser;
 
-    public Admin(String firstName, String lastName, boolean superUser) {
+    public Admin(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.superUser = superUser;
     }
 
     public String getFirstName() {
@@ -29,11 +27,4 @@ public class Admin {
         this.lastName = lastName;
     }
 
-    public boolean getSuperUser() {
-        return superUser;
-    }
-
-    public void setSuperUser(boolean superUser) {
-        this.superUser = superUser;
-    }
 }

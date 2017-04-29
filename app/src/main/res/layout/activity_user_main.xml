@@ -5,83 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.shelterforpets.User.UserMainActivity"
-    android:layout_margin="8dp">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign out"
-        android:id="@+id/signout_button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+    android:background="@drawable/user_background">
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
         android:src="@drawable/camera_button"
-        android:layout_marginRight="38dp"
-        android:layout_marginEnd="38dp"
         android:id="@+id/capture_animal"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/taken_pic"
-        android:adjustViewBounds="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:background="@android:color/transparent"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/location_tv"
-        android:layout_below="@+id/taken_pic"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="38dp" />
-
-    <Button
+    <ImageButton
         android:id="@+id/user_show_events"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:text="@string/show_events_button"
+        android:src="@drawable/event"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
         android:layout_above="@+id/capture_animal"
-        android:layout_toLeftOf="@+id/signout_button"
-        android:layout_toStartOf="@+id/signout_button"
-        android:layout_marginBottom="11dp" />
+        android:layout_toLeftOf="@+id/capture_animal"
+        android:layout_toStartOf="@+id/capture_animal"
+        android:layout_marginBottom="10dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/user_show_vets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/capture_animal"
-        android:layout_alignRight="@+id/capture_animal"
-        android:layout_alignTop="@+id/user_show_events"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:text="@string/vets_directory" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="@string/vets_directory"
+        android:src="@drawable/vets"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:layout_alignTop="@+id/user_profile"
+        android:layout_alignRight="@+id/user_show_users"
+        android:layout_alignEnd="@+id/user_show_users" />
 
-    <Button
+    <ImageButton
         android:id="@+id/user_show_users"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/user_show_events"
-        android:layout_toEndOf="@+id/location_tv"
-        android:layout_toRightOf="@+id/location_tv"
-        android:text="@string/show_users" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="@string/show_users"
+        android:src="@drawable/users"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:layout_alignTop="@+id/user_show_events"
+        android:layout_toRightOf="@+id/capture_animal"
+        android:layout_toEndOf="@+id/capture_animal" />
 
-    <Button
+    <ImageButton
         android:id="@+id/user_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:text="@string/user_profile"
-        android:layout_above="@+id/user_show_vets"
-        android:layout_alignRight="@+id/user_show_vets"
-        android:layout_alignEnd="@+id/user_show_vets" />
+        android:src="@drawable/profile"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:layout_above="@+id/user_show_events"
+        android:layout_alignLeft="@+id/user_show_events"
+        android:layout_alignStart="@+id/user_show_events"
+        android:layout_marginBottom="36dp" />
 
 </RelativeLayout>

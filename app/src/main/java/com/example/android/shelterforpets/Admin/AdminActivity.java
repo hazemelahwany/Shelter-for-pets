@@ -5,8 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.android.shelterforpets.Authentication.LogInActivity;
@@ -24,15 +28,31 @@ public class AdminActivity extends AppCompatActivity {
     private static final int RC_SIGNIN = 1;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.sign_out_menu_item) {
+            LogInActivity.mFirebaseAuth.signOut();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        Button addAdmins = (Button) findViewById(R.id.add_admin);
-        Button addShelters = (Button) findViewById(R.id.add_shelter);
-        Button vets = (Button) findViewById(R.id.admin_vets);
-        Button events = (Button) findViewById(R.id.admin_events);
-        Button signout = (Button) findViewById(R.id.admin_sign_out);
+        ImageButton addAdmins = (ImageButton) findViewById(R.id.add_admin);
+        ImageButton addShelters = (ImageButton) findViewById(R.id.add_shelter);
+        ImageButton vets = (ImageButton) findViewById(R.id.admin_vets);
+        ImageButton events = (ImageButton) findViewById(R.id.admin_events);
 
         addAdmins.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,22 +82,12 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-        signout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LogInActivity.mFirebaseAuth.signOut();
-            }
-        });
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                        Toast.makeText(AdminActivity.this, "User signed in", Toast.LENGTH_SHORT)
-                                .show();
-                } else {
+                if (user == null) {
                     // User is signed out
                     Log.d("Authentication", "onAuthStateChanged:signed_out");
                     startActivityForResult(new Intent(AdminActivity.this, LogInActivity.class),

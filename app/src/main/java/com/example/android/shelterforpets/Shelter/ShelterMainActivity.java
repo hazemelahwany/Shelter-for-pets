@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,6 +27,23 @@ public class ShelterMainActivity extends AppCompatActivity {
     private static final int RC_SIGNIN = 1;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.sign_out_menu_item) {
+            LogInActivity.mFirebaseAuth.signOut();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_main);
@@ -41,24 +61,13 @@ public class ShelterMainActivity extends AppCompatActivity {
             }
         });
 
-        Button signOut = (Button) findViewById(R.id.shelter_sign_out);
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LogInActivity.mFirebaseAuth.signOut();
-            }
-        });
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = mFirebaseAuth.getCurrentUser();
                 if (user != null) {
-
                     userID = user.getUid();
-                    // User is signed in
-                    Toast.makeText(ShelterMainActivity.this, "User signed in", Toast.LENGTH_SHORT)
-                            .show();
                 } else {
                     // User is signed out
                     Log.d("Authentication", "onAuthStateChanged:signed_out");

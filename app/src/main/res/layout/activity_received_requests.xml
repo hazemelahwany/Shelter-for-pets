@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.Shelter.ReceivedRequests">
+    tools:context="com.example.android.shelterforpets.Shelter.ReceivedRequests"
+    android:background="@drawable/dog_with_filter">
 
-    <GridView
+    <ListView
         android:id="@+id/requests_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="auto_fit"
-        android:stretchMode="columnWidth"
-        android:gravity="center"/>
+        android:layout_margin="16dp"/>
 
 </FrameLayout>

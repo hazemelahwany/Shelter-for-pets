@@ -3,16 +3,16 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
         android:orientation="vertical"
-        tools:context="com.example.android.shelterforpets.Admin.AddShelters">
+        tools:context="com.example.android.shelterforpets.Admin.AddShelters"
+        android:background="@drawable/backgrouand_with_filter">
 
         <EditText
             android:id="@+id/add_shelter_name"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="64dp"
             android:ems="10"
             android:hint="@string/shelter_name_hint"
             android:inputType="textPersonName"
@@ -55,18 +55,19 @@
             android:layout_alignLeft="@+id/add_shelter_password"
             android:layout_alignStart="@+id/add_shelter_password" />
 
-
-
-
-        <Button
+        <ImageButton
             android:id="@+id/add_shelter_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/add_shelter_button"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp" />
+            android:src="@drawable/add_shelter_button"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="57dp"
+            android:layout_below="@+id/add_shelter_confirm_password"
+            android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
 

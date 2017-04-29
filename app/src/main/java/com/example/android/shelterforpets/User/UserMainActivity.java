@@ -9,15 +9,16 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.shelterforpets.Authentication.LogInActivity;
 import com.example.android.shelterforpets.DatabaseObjects.LostPet;
+import com.example.android.shelterforpets.DatabaseObjects.User;
 import com.example.android.shelterforpets.R;
 import com.example.android.shelterforpets.TrackGPS;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,14 +56,27 @@ public class UserMainActivity extends AppCompatActivity {
 
     private double longitude;
     private double latitude;
-    private TrackGPS gps;
     private Location currentLocation;
     private float minimumDistance;
     private String shelterID;
 
 
-    private ImageView takenPic;
-    private TextView locationTv;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.sign_out_menu_item) {
+            LogInActivity.mFirebaseAuth.signOut();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +89,45 @@ public class UserMainActivity extends AppCompatActivity {
         sheltersDatabase = mFirebaseDatabase.getReference().child("Shelters");
         lostPetsRef = storage.getReference().child("lost_pets");
 
-        Button signout = (Button) findViewById(R.id.signout_button);
         ImageButton captureAnimal = (ImageButton) findViewById(R.id.capture_animal);
-        takenPic = (ImageView) findViewById(R.id.taken_pic);
-        locationTv = (TextView) findViewById(R.id.location_tv);
+        ImageButton showEvents = (ImageButton) findViewById(R.id.user_show_events);
+        ImageButton showVets = (ImageButton) findViewById(R.id.user_show_vets);
+        ImageButton showUsers = (ImageButton) findViewById(R.id.user_show_users);
+        ImageButton profile = (ImageButton) findViewById(R.id.user_profile);
 
-        gps = new TrackGPS(UserMainActivity.this);
+        showEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserMainActivity.this, ShowEventsActivity.class));
+            }
+        });
+
+        showVets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserMainActivity.this, ShowVetsActivity.class));
+            }
+        });
+
+        showUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(UserMainActivity.this, ShowUsersActivity.class);
+                i.putExtra("userID", mFirebaseAuth.getCurrentUser().getUid());
+                startActivity(i);
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(UserMainActivity.this, UserProfileActivity.class);
+                i.putExtra("userID", mFirebaseAuth.getCurrentUser().getUid());
+                startActivity(i);
+            }
+        });
+
+        TrackGPS gps = new TrackGPS(UserMainActivity.this);
         currentLocation = new Location("");
         minimumDistance = 0;
 
@@ -125,13 +172,6 @@ public class UserMainActivity extends AppCompatActivity {
         });
 
 
-        signout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mFirebaseAuth.signOut();
-            }
-        });
-
         captureAnimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,10 +185,7 @@ public class UserMainActivity extends AppCompatActivity {
                 FirebaseUser user = mFirebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    if (user.isEmailVerified()) {
-                        Toast.makeText(UserMainActivity.this, "User signed in", Toast.LENGTH_SHORT)
-                                .show();
-                    } else {
+                    if (!user.isEmailVerified()) {
                         startActivityForResult(new Intent(UserMainActivity.this, LogInActivity.class),
                                 RC_EMAIL_VERIFY);
                     }
@@ -216,6 +253,7 @@ public class UserMainActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
                     // Handle unsuccessful uploads
+                    Toast.makeText(UserMainActivity.this, "Upload failed", Toast.LENGTH_SHORT).show();
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -224,15 +262,9 @@ public class UserMainActivity extends AppCompatActivity {
                     @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
                     LostPet lostPet = new LostPet(downloadUrl.toString(), "" + longitude + "," + latitude);
                     sheltersDatabase.child(shelterID).child("Requests").child(uuid).setValue(lostPet);
+                    Toast.makeText(UserMainActivity.this, "Sent to nearest shelter", Toast.LENGTH_SHORT).show();
                 }
             });
-            takenPic.setImageBitmap(imageBitmap);
-            String loc = "Longitude: " + longitude + "\n"
-                    + "Latitude: " + latitude;
-            locationTv.setText(loc);
-
-
-
         }
     }
 }

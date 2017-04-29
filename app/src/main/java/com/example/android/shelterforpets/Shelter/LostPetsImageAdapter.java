@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.android.shelterforpets.DatabaseObjects.LostPet;
 import com.example.android.shelterforpets.R;
 
 import java.util.ArrayList;

@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.Shelter.ShelterMainActivity">
+    tools:context="com.example.android.shelterforpets.Shelter.ShelterMainActivity"
+    android:background="@drawable/user_background">
 
     <Button
         android:id="@+id/shelter_view_request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="46dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="54dp"
-        android:text="@string/view_requests" />
+        android:text="@string/view_requests"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/shelter_view_events"
+        android:layout_toStartOf="@+id/shelter_view_events"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="188dp" />
 
     <Button
         android:id="@+id/shelter_view_events"
@@ -29,12 +30,4 @@
         android:layout_marginRight="38dp"
         android:text="@string/show_events_button" />
 
-    <Button
-        android:id="@+id/shelter_sign_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sign out"
-        android:layout_below="@+id/shelter_view_request"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp" />
 </RelativeLayout>
