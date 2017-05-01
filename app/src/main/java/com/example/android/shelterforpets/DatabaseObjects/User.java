@@ -11,6 +11,12 @@ public class User {
         this.lastName = lastName;
     }
 
+    public User(String firstName, String lastName, String photoUrl) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.photoUrl = photoUrl;
+    }
+
     public String getFirstName() {
         return firstName;
     }

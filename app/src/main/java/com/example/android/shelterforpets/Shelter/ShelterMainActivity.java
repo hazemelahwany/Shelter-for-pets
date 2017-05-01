@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.android.shelterforpets.Authentication.LogInActivity;
@@ -49,9 +50,9 @@ public class ShelterMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shelter_main);
 
         // TODO: 25-04-2017 lsa hyt3mal
-        Button viewEvents = (Button) findViewById(R.id.shelter_view_events);
+        ImageButton viewEvents = (ImageButton) findViewById(R.id.shelter_view_events);
 
-        Button viewRequests = (Button) findViewById(R.id.shelter_view_request);
+        ImageButton viewRequests = (ImageButton) findViewById(R.id.shelter_view_request);
         viewRequests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -75,7 +75,16 @@
     <!--Menu File-->
     <string name="sign_out_menu_item">Sign Out</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--User Profile-->
+    <string name="pets_text_view">Pets</string>
+    <string name="edit_profile_button">Edit Profile</string>
+    <string name="no_pets">You Currently Have No Pets</string>
+    <string name="add_pet_button">Add Pet</string>
 
+    <!--Add Pet Activity-->
+    <string name="pet_name">Pet Name</string>
+    <string name="pet_type">Pet Type (Cat, Dog, etc..)</string>
+    <string name="pet_gender">Pet Gender</string>
+    <string name="pet_age">Pet Age</string>
+    <string name="pet_breed">Pet Breed</string>
 </resources>

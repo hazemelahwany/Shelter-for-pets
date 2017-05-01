@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/backgrouand_with_filter">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/pet"
+        android:layout_marginTop="55dp"
+        android:id="@+id/edit_pet_pic"
+        android:clickable="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/edit_pet_pic"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/edit_pet_name"
+        android:hint="@string/pet_name"/>
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_pet_name"
+        android:layout_alignLeft="@+id/edit_pet_name"
+        android:layout_alignStart="@+id/edit_pet_name"
+        android:layout_marginTop="8dp"
+        android:hint="@string/pet_type"
+        android:id="@+id/edit_pet_type"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/pet_breed"
+        android:layout_below="@+id/edit_pet_type"
+        android:layout_alignLeft="@+id/edit_pet_type"
+        android:layout_alignStart="@+id/edit_pet_type"
+        android:layout_marginTop="8dp"
+        android:id="@+id/edit_pet_breed"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_pet_gender"
+        android:hint="@string/pet_gender"
+        android:layout_below="@+id/edit_pet_breed"
+        android:layout_alignLeft="@+id/edit_pet_breed"
+        android:layout_alignStart="@+id/edit_pet_breed"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_pet_age"
+        android:inputType="number"
+        android:hint="@string/pet_age"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/edit_pet_gender"
+        android:layout_alignLeft="@+id/edit_pet_gender"
+        android:layout_alignStart="@+id/edit_pet_gender" />
+
+    <ImageButton
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:src="@drawable/save_button"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:id="@+id/edit_pet_save_button"
+        android:layout_below="@+id/edit_pet_age"
+        android:layout_alignLeft="@+id/edit_pet_pic"
+        android:layout_alignStart="@+id/edit_pet_pic"
+        android:layout_marginTop="12dp" />
+
+</RelativeLayout>

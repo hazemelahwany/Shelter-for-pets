@@ -7,27 +7,35 @@
     tools:context="com.example.android.shelterforpets.Shelter.ShelterMainActivity"
     android:background="@drawable/user_background">
 
-    <Button
+    <ImageButton
         android:id="@+id/shelter_view_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="110dp"
         android:text="@string/view_requests"
+        android:layout_marginBottom="146dp"
+        android:src="@drawable/show_requests"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/shelter_view_events"
-        android:layout_toStartOf="@+id/shelter_view_events"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="188dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="41dp"
+        android:layout_marginStart="41dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/shelter_view_events"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="110dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/shelter_view_request"
         android:layout_marginEnd="38dp"
         android:layout_marginRight="38dp"
-        android:text="@string/show_events_button" />
+        android:text="@string/show_events_button"
+        android:src="@drawable/event"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
 
 </RelativeLayout>

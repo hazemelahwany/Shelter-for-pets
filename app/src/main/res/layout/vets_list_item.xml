@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/vets_list_item">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/vet_name"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/show_vet_name"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/transparent"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/vet_adress"
+        android:layout_below="@+id/show_vet_name"
+        android:layout_alignLeft="@+id/show_vet_name"
+        android:layout_alignStart="@+id/show_vet_name"
+        android:layout_marginTop="16dp"
+        android:id="@+id/show_vet_address"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/vet_number"
+        android:layout_below="@+id/show_vet_address"
+        android:layout_alignLeft="@+id/show_vet_address"
+        android:layout_alignStart="@+id/show_vet_address"
+        android:layout_marginTop="16dp"
+        android:id="@+id/show_vet_number"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/time"
+        android:layout_below="@+id/show_vet_number"
+        android:layout_alignLeft="@+id/show_vet_number"
+        android:layout_alignStart="@+id/show_vet_number"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:id="@+id/show_vet_time"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/show_vet_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/show_vet_address"
+        android:layout_toRightOf="@+id/show_vet_name"
+        android:layout_toEndOf="@+id/show_vet_name" />
+
+    <TextView
+        android:id="@+id/show_vet_address_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/show_vet_number"
+        android:layout_alignLeft="@+id/show_vet_name_tv"
+        android:layout_alignStart="@+id/show_vet_name_tv"
+        android:layout_marginBottom="9dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/show_vet_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/show_vet_time"
+        android:layout_alignLeft="@+id/show_vet_address_tv"
+        android:layout_alignStart="@+id/show_vet_address_tv"
+        android:layout_marginBottom="8dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/show_vet_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:layout_alignBottom="@+id/show_vet_time"
+        android:layout_alignLeft="@+id/show_vet_number_tv"
+        android:layout_alignStart="@+id/show_vet_number_tv" />
+
+</RelativeLayout>
