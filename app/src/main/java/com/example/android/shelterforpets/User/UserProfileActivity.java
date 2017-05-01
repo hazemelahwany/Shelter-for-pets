@@ -50,83 +50,82 @@ public class UserProfileActivity extends AppCompatActivity {
         if (!userID.equals(user.getUid())) {
             editProfile.setVisibility(View.GONE);
             addPet.setVisibility(View.GONE);
-        } else {
-
-            final ArrayList<String> petsList = new ArrayList<>();
-            final PetAdapter adapter = new PetAdapter(this, R.layout.pets_list_item, petsList);
-
-            userDatabase.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    String name = dataSnapshot.child("firstName").getValue(String.class) + " "
-                            + dataSnapshot.child("lastName").getValue(String.class);
-                    user_name.setText(name);
-                    if (!dataSnapshot.child("photoUrl").getValue(String.class).equals("null")) {
-                        Glide.with(getApplicationContext())
-                                .load(dataSnapshot.child("photoUrl").getValue(String.class))
-                                .into(user_picture);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-            petsDatabase.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.hasChildren()) {
-                        userPetsExistance.setVisibility(View.GONE);
-                        petsListView.setVisibility(View.VISIBLE);
-                        for (DataSnapshot pet : dataSnapshot.getChildren()) {
-                            String s = pet.child("petName").getValue(String.class) + "%%"
-                                    + pet.child("petType").getValue(String.class) + "%%"
-                                    + pet.child("petBreed").getValue(String.class) + "%%"
-                                    + pet.child("photoUrl").getValue(String.class) + "%%"
-                                    + pet.getKey();
-
-                            petsList.add(s);
-                        }
-                        petsListView.setAdapter(adapter);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-            petsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    String pet = adapter.getItem(i).split("%%")[4];
-                    Intent intent = new Intent(UserProfileActivity.this, PetDetailsActivity.class);
-                    intent.putExtra("pet_id", pet);
-                    intent.putExtra("userID", userID);
-                    startActivity(intent);
-                }
-            });
-
-            editProfile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(UserProfileActivity.this, EditProfileActivity.class);
-                    intent.putExtra("userID", userID);
-                    startActivity(intent);
-                }
-            });
-
-            addPet.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(UserProfileActivity.this, AddPet.class);
-                    intent.putExtra("userID", userID);
-                    startActivity(intent);
-                }
-            });
         }
+
+        final ArrayList<String> petsList = new ArrayList<>();
+        final PetAdapter adapter = new PetAdapter(this, R.layout.pets_list_item, petsList);
+
+        userDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.child("firstName").getValue(String.class) + " "
+                        + dataSnapshot.child("lastName").getValue(String.class);
+                user_name.setText(name);
+                if (!dataSnapshot.child("photoUrl").getValue(String.class).equals("null")) {
+                    Glide.with(getApplicationContext())
+                            .load(dataSnapshot.child("photoUrl").getValue(String.class))
+                            .into(user_picture);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        petsDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    userPetsExistance.setVisibility(View.GONE);
+                    petsListView.setVisibility(View.VISIBLE);
+                    for (DataSnapshot pet : dataSnapshot.getChildren()) {
+                        String s = pet.child("petName").getValue(String.class) + "%%"
+                                + pet.child("petType").getValue(String.class) + "%%"
+                                + pet.child("petBreed").getValue(String.class) + "%%"
+                                + pet.child("photoUrl").getValue(String.class) + "%%"
+                                + pet.getKey();
+
+                        petsList.add(s);
+                    }
+                    petsListView.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        petsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String pet = adapter.getItem(i).split("%%")[4];
+                Intent intent = new Intent(UserProfileActivity.this, PetDetailsActivity.class);
+                intent.putExtra("pet_id", pet);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
+            }
+        });
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserProfileActivity.this, EditProfileActivity.class);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
+            }
+        });
+
+        addPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserProfileActivity.this, AddPet.class);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
+            }
+        });
     }
 }

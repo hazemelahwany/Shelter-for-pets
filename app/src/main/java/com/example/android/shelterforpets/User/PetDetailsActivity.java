@@ -43,36 +43,35 @@ public class PetDetailsActivity extends AppCompatActivity {
 
         if (!userId.equals(user.getUid())) {
             editPet.setVisibility(View.GONE);
-        } else {
-            petsDatabase.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    petName.setText(dataSnapshot.child("petName").getValue(String.class));
-                    petType.setText(dataSnapshot.child("petType").getValue(String.class));
-                    petBreed.setText(dataSnapshot.child("petBreed").getValue(String.class));
-                    petGender.setText(dataSnapshot.child("petGender").getValue(String.class));
-                    petAge.setText(dataSnapshot.child("petAge").getValue(String.class) + " Years old");
-
-                    Glide.with(getApplicationContext())
-                            .load(dataSnapshot.child("photoUrl").getValue(String.class))
-                            .into(petImage);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-            editPet.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(PetDetailsActivity.this, EditPet.class);
-                    intent.putExtra("userID", userId);
-                    intent.putExtra("petID", petID);
-                    startActivity(intent);
-                }
-            });
         }
+        petsDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                petName.setText(dataSnapshot.child("petName").getValue(String.class));
+                petType.setText(dataSnapshot.child("petType").getValue(String.class));
+                petBreed.setText(dataSnapshot.child("petBreed").getValue(String.class));
+                petGender.setText(dataSnapshot.child("petGender").getValue(String.class));
+                petAge.setText(dataSnapshot.child("petAge").getValue(String.class) + " Years old");
+
+                Glide.with(getApplicationContext())
+                        .load(dataSnapshot.child("photoUrl").getValue(String.class))
+                        .into(petImage);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        editPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PetDetailsActivity.this, EditPet.class);
+                intent.putExtra("userID", userId);
+                intent.putExtra("petID", petID);
+                startActivity(intent);
+            }
+        });
     }
 }

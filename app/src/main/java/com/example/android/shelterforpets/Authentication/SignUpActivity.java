@@ -79,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
                                        if (task.isSuccessful()) {
                                            FirebaseUser user = task.getResult().getUser();
                                            User u = new User(signUpFirstName.getText().toString(),
-                                                   signUpLastName.getText().toString());
+                                                   signUpLastName.getText().toString(), "null");
                                            usersDatabase.child(user.getUid()).setValue(u);
                                        }
 

@@ -91,7 +91,6 @@ public class SelectShelterLocation extends AppCompatActivity implements OnMapRea
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
                 latitude = place.getLatLng().latitude;
                 longitude = place.getLatLng().longitude;
                 if (address != null) {
@@ -105,7 +104,6 @@ public class SelectShelterLocation extends AppCompatActivity implements OnMapRea
 
             @Override
             public void onError(Status status) {
-                // TODO: Handle the error.
                 Log.e("Error", "An error occurred: " + status);
             }
         });

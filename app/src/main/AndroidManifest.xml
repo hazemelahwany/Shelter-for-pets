@@ -89,10 +89,14 @@
         <activity
             android:name=".User.UserProfileActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".User.PetDetailsActivity" />
-        <activity android:name=".User.EditProfileActivity" />
-        <activity android:name=".User.AddPet" />
-        <activity android:name=".User.EditPet"></activity>
+        <activity android:name=".User.PetDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".User.EditProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".User.AddPet"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".User.EditPet"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

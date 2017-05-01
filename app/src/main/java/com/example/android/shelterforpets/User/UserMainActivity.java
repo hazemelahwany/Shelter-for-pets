@@ -59,6 +59,7 @@ public class UserMainActivity extends AppCompatActivity {
     private Location currentLocation;
     private float minimumDistance;
     private String shelterID;
+    FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -83,6 +84,7 @@ public class UserMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -210,13 +212,13 @@ public class UserMainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+        firebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        firebaseAuth.removeAuthStateListener(mAuthStateListener);
     }
 
     @Override

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.android.shelterforpets.Authentication.LogInActivity;
 import com.example.android.shelterforpets.R;
+import com.example.android.shelterforpets.User.ShowEventsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -49,8 +50,13 @@ public class ShelterMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_main);
 
-        // TODO: 25-04-2017 lsa hyt3mal
         ImageButton viewEvents = (ImageButton) findViewById(R.id.shelter_view_events);
+        viewEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ShelterMainActivity.this, ShowEventsActivity.class));
+            }
+        });
 
         ImageButton viewRequests = (ImageButton) findViewById(R.id.shelter_view_request);
         viewRequests.setOnClickListener(new View.OnClickListener() {
