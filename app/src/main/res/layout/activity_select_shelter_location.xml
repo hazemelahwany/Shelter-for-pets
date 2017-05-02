@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.Admin.SelectShelterLocation"
+    tools:context="com.salmaali.app.petspot.Admin.SelectShelterLocation"
     android:orientation="vertical"
     android:background="@drawable/dog_with_filter">
 
@@ -19,7 +19,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="440dp"
-        tools:context="com.example.mapwithmarker.MapsMarkerActivity"
+        tools:context="com.salmaali.mapwithmarker.MapsMarkerActivity"
         android:layout_gravity="center_horizontal" />
 
     <ImageButton

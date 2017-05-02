@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.Authentication.LogInActivity"
+    tools:context="com.salmaali.app.petspot.Authentication.LogInActivity"
     android:background="@drawable/backgrouand_with_filter">
 
     <ImageView

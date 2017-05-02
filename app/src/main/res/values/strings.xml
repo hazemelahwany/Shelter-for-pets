@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shelter for pets</string>
+    <string name="app_name">Pet Spot</string>
 
     <!--Login Activity Strings-->
     <string name="login_button">Sign in</string>
@@ -63,6 +63,7 @@
 
     <!--Shelter Main Activity-->
     <string name="view_requests">View Requests</string>
+    <string name="request_location">Click on Image to view Location</string>
 
     <!--Add Events Activity-->
     <string name="event_name">Event Name</string>
@@ -87,4 +88,5 @@
     <string name="pet_gender">Pet Gender</string>
     <string name="pet_age">Pet Age</string>
     <string name="pet_breed">Pet Breed</string>
+    <string name="imaage_change">Click on image to select another one</string>
 </resources>

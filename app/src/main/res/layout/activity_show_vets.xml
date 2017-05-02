@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.User.ShowVetsActivity"
+    tools:context="com.salmaali.app.petspot.User.ShowVetsActivity"
     android:background="@drawable/dog_with_filter">
 
     <ListView

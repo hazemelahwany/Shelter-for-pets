@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.example.android.shelterforpets.Admin.AddShelters"
+        tools:context="com.salmaali.app.petspot.Admin.AddShelters"
         android:background="@drawable/backgrouand_with_filter">
 
         <EditText

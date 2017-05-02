@@ -4,18 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.shelterforpets.User.EditProfileActivity"
+    tools:context="com.salmaali.app.petspot.User.EditProfileActivity"
     android:background="@drawable/dog_with_filter">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/imaage_change"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/edit_profile_pic"
+        android:layout_alignEnd="@+id/edit_profile_pic"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="49dp" />
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/profile_icon"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="88dp"
         android:id="@+id/edit_profile_pic"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
