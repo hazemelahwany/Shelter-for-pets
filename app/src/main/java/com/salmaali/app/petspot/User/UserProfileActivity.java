@@ -44,6 +44,7 @@ public class UserProfileActivity extends AppCompatActivity {
         final ImageView user_picture = (ImageView) findViewById(R.id.user_profile_picture);
         ImageButton editProfile = (ImageButton) findViewById(R.id.user_profile_edit_button);
         ImageButton addPet = (ImageButton) findViewById(R.id.user_profile_add_pet);
+        final TextView volunteerStatus = (TextView) findViewById(R.id.user_profile_volunteering_status);
 
         if (!userID.equals(user.getUid())) {
             editProfile.setVisibility(View.GONE);
@@ -59,6 +60,12 @@ public class UserProfileActivity extends AppCompatActivity {
                 String name = dataSnapshot.child("firstName").getValue(String.class) + " "
                         + dataSnapshot.child("lastName").getValue(String.class);
                 user_name.setText(name);
+                boolean vStatus = dataSnapshot.child("volunteer").getValue(Boolean.class);
+                if (vStatus) {
+                    volunteerStatus.setText(R.string.volunteer_true);
+                } else {
+                    volunteerStatus.setText(R.string.volunteer_false);
+                }
                 if (!dataSnapshot.child("photoUrl").getValue(String.class).equals("null")) {
                     Glide.with(getApplicationContext())
                             .load(dataSnapshot.child("photoUrl").getValue(String.class))

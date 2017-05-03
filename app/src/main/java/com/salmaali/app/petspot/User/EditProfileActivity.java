@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -49,6 +50,7 @@ public class EditProfileActivity extends AppCompatActivity {
         final EditText firstName = (EditText) findViewById(R.id.edit_profile_first_name);
         final EditText lastName = (EditText) findViewById(R.id.edit_profile_last_name);
         ImageButton save = (ImageButton) findViewById(R.id.edit_profile_save_button);
+        final CheckBox volunteer = (CheckBox) findViewById(R.id.edit_profile_volunteer_checkBox);
 
         userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -98,14 +100,26 @@ public class EditProfileActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                User user = new User(firstName.getText().toString(), lastName.getText().toString(), downloadUrl.toString());
-                                userDatabase.setValue(user);
-                                progress.dismiss();
+                                if (volunteer.isChecked()) {
+                                    User user = new User(firstName.getText().toString(), lastName.getText().toString(), downloadUrl.toString(), true);
+                                    userDatabase.setValue(user);
+                                    progress.dismiss();
+                                } else {
+                                    User user = new User(firstName.getText().toString(), lastName.getText().toString(), downloadUrl.toString(), false);
+                                    userDatabase.setValue(user);
+                                    progress.dismiss();
+                                }
                             }
                         });
                     } else {
-                        User user = new User(firstName.getText().toString(), lastName.getText().toString(), "null");
-                        userDatabase.setValue(user);
+                        if (volunteer.isChecked()) {
+                            User user = new User(firstName.getText().toString(), lastName.getText().toString(), "null", true);
+                            userDatabase.setValue(user);
+                        } else {
+                            User user = new User(firstName.getText().toString(), lastName.getText().toString(), "null", false);
+                            userDatabase.setValue(user);
+                        }
+
                     }
                 }
             }

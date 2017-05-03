@@ -18,6 +18,7 @@
         to verify your account</string>
     <string name="check_all_fields">Please enter all fields</string>
     <string name="check_passwords">Password is not the same in the two fields</string>
+    <string name="volunteer_check_box">Do you want to volunteer in raising homeless animals?</string>
 
 
     <!--Forgot Password Activity-->
@@ -81,6 +82,8 @@
     <string name="edit_profile_button">Edit Profile</string>
     <string name="no_pets">You Currently Have No Pets</string>
     <string name="add_pet_button">Add Pet</string>
+    <string name="volunteer_true">Volunteered to own homeless animals</string>
+    <string name="volunteer_false">Can not own homeless animals right now</string>
 
     <!--Add Pet Activity-->
     <string name="pet_name">Pet Name</string>

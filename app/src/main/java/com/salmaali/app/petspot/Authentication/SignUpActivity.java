@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText signupPassword;
     private EditText signupCinfirmPassword;
     private ImageButton signupButton;
+    private CheckBox volunteer;
     FirebaseAuth firebaseAuth;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -52,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
         signupPassword = (EditText) findViewById(R.id.signup_password);
         signupCinfirmPassword = (EditText) findViewById(R.id.signup_confirm_password);
         signupButton = (ImageButton) findViewById(R.id.signup_button);
+        volunteer = (CheckBox) findViewById(R.id.signup_volunteer_checkBox);
 
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,9 +79,15 @@ public class SignUpActivity extends AppCompatActivity {
 
                                        if (task.isSuccessful()) {
                                            FirebaseUser user = task.getResult().getUser();
-                                           User u = new User(signUpFirstName.getText().toString(),
-                                                   signUpLastName.getText().toString(), "null");
-                                           usersDatabase.child(user.getUid()).setValue(u);
+                                           if (volunteer.isChecked()) {
+                                               User u = new User(signUpFirstName.getText().toString(),
+                                                       signUpLastName.getText().toString(), "null", true);
+                                               usersDatabase.child(user.getUid()).setValue(u);
+                                           } else {
+                                               User u = new User(signUpFirstName.getText().toString(),
+                                                       signUpLastName.getText().toString(), "null", false);
+                                               usersDatabase.child(user.getUid()).setValue(u);
+                                           }
                                        }
 
                                        // If sign in fails, display a message to the user. If sign

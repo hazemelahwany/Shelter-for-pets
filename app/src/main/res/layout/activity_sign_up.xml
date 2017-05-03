@@ -8,13 +8,14 @@
     android:background="@drawable/backgrouand_with_filter">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/app_logo"
         android:adjustViewBounds="true"
         android:id="@+id/imageView3"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/signup_button"
+        android:layout_alignStart="@+id/signup_button" />
 
     <EditText
         android:id="@+id/signup_email"
@@ -61,20 +62,19 @@
         android:text="@string/signup_button"
         android:src="@drawable/signup_activity_button"
         android:background="@android:color/transparent"
-        android:layout_marginTop="18dp"
         android:scaleType="fitXY"
-        android:layout_below="@+id/signup_confirm_password"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/signup_volunteer_checkBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
 
     <EditText
         android:id="@+id/signup_first_name"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="127dp"
         android:ems="10"
         android:hint="@string/first_name_hint"
         android:inputType="textPersonName"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/imageView3"
         android:layout_alignLeft="@+id/signup_last_name"
         android:layout_alignStart="@+id/signup_last_name" />
 
@@ -89,4 +89,16 @@
         android:layout_marginBottom="8dp"
         android:layout_below="@+id/signup_first_name"
         android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:id="@+id/signup_volunteer_checkBox"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/volunteer_check_box"
+        android:layout_below="@+id/signup_confirm_password"
+        android:layout_alignLeft="@+id/signup_confirm_password"
+        android:layout_alignStart="@+id/signup_confirm_password"
+        android:layout_alignRight="@+id/signup_confirm_password"
+        android:layout_alignEnd="@+id/signup_confirm_password" />
 </RelativeLayout>

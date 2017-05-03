@@ -5,16 +5,19 @@ public class User {
     private String firstName;
     private String lastName;
     private String photoUrl;
+    private boolean volunteer;
 
-    public User(String firstName, String lastName) {
+    public User(String firstName, String lastName, boolean volunteer) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.volunteer = volunteer;
     }
 
-    public User(String firstName, String lastName, String photoUrl) {
+    public User(String firstName, String lastName, String photoUrl, boolean volunteer) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.photoUrl = photoUrl;
+        this.volunteer = volunteer;
     }
 
     public String getFirstName() {
@@ -39,5 +42,13 @@ public class User {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public boolean isVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(boolean volunteer) {
+        this.volunteer = volunteer;
     }
 }
