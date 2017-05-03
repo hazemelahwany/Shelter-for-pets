@@ -10,58 +10,64 @@
         android:id="@+id/add_admin"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="@string/add_admin_button"
         android:src="@drawable/add_admin"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
-        android:layout_below="@+id/admin_events"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/add_shelter"
         android:layout_alignLeft="@+id/add_shelter"
-        android:layout_alignStart="@+id/add_shelter"
-        android:layout_marginTop="27dp" />
+        android:layout_alignStart="@+id/add_shelter" />
 
     <ImageButton
         android:id="@+id/add_shelter"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="@string/add_shelter_button"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/add_shelter"
-        android:layout_marginTop="145dp"
-        android:layout_marginLeft="66dp"
-        android:layout_marginStart="66dp"
+        android:layout_marginTop="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp" />
 
     <ImageButton
         android:id="@+id/admin_events"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="@string/admin_events_button"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/event"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp"
         android:layout_alignTop="@+id/add_shelter"
-        android:layout_toRightOf="@+id/add_admin"
-        android:layout_toEndOf="@+id/add_admin" />
+        android:layout_alignLeft="@+id/admin_show_users"
+        android:layout_alignStart="@+id/admin_show_users" />
 
     <ImageButton
         android:id="@+id/admin_vets"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="@string/admin_vets_button"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:src="@drawable/vets"
+        android:layout_alignTop="@+id/admin_events"
+        android:layout_toRightOf="@+id/admin_events"
+        android:layout_toEndOf="@+id/admin_events"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/admin_show_users"
+        android:src="@drawable/users"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
         android:layout_alignTop="@+id/add_admin"
-        android:layout_alignLeft="@+id/admin_events"
-        android:layout_alignStart="@+id/admin_events" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

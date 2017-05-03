@@ -14,6 +14,7 @@ import com.salmaali.app.petspot.Authentication.LogInActivity;
 import com.salmaali.app.petspot.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.salmaali.app.petspot.User.ShowUsersActivity;
 
 import static com.salmaali.app.petspot.Authentication.LogInActivity.mFirebaseAuth;
 
@@ -50,6 +51,7 @@ public class AdminActivity extends AppCompatActivity {
         ImageButton addShelters = (ImageButton) findViewById(R.id.add_shelter);
         ImageButton vets = (ImageButton) findViewById(R.id.admin_vets);
         ImageButton events = (ImageButton) findViewById(R.id.admin_events);
+        ImageButton showUsers = (ImageButton) findViewById(R.id.admin_show_users);
 
         addAdmins.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +81,14 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+        showUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(AdminActivity.this, ShowUsersActivity.class);
+                i.putExtra("userID", mFirebaseAuth.getCurrentUser().getUid());
+                startActivity(i);
+            }
+        });
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
