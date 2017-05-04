@@ -33,7 +33,7 @@ public class UserProfileActivity extends AppCompatActivity {
         Intent i = getIntent();
         userID = i.getStringExtra("userID");
 
-        FirebaseUser user = LogInActivity.mFirebaseAuth.getCurrentUser();
+        FirebaseUser user = UserMainActivity.firebaseAuth.getCurrentUser();
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference userDatabase = mFirebaseDatabase.getReference().child("Users").child(userID);
         DatabaseReference petsDatabase = mFirebaseDatabase.getReference().child("Pets").child(userID);

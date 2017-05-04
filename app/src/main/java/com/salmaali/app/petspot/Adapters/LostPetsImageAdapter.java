@@ -1,4 +1,4 @@
-package com.salmaali.app.petspot.Shelter;
+package com.salmaali.app.petspot.Adapters;
 
 
 import android.app.Activity;
@@ -20,7 +20,7 @@ public class LostPetsImageAdapter extends ArrayAdapter<String> {
     private ArrayList<String> adapter;
 
 
-    LostPetsImageAdapter(Context c, int layoutResourceId, ArrayList<String> adapter) {
+    public LostPetsImageAdapter(Context c, int layoutResourceId, ArrayList<String> adapter) {
         super(c, layoutResourceId , adapter);
         mContext = c;
         this.adapter = new ArrayList<>();

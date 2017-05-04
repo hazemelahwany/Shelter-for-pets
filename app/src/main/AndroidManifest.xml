@@ -33,43 +33,43 @@
         <!-- android:value="AIzaSyDzBzFd_gTCBUFk__e4Q4i5pB9pVJp-vwQ"/> -->
 
         <activity
-            android:name="com.salmaali.app.petspot.Authentication.LogInActivity"
+            android:name=".Authentication.LogInActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Authentication.ForgotPasswordActivity"
+            android:name=".Authentication.ForgotPasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Authentication.SignUpActivity"
+            android:name=".Authentication.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.User.UserMainActivity"
+            android:name=".User.UserMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Admin.AdminActivity"
+            android:name=".Admin.AdminActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Admin.AddShelters"
+            android:name=".Admin.AddShelters"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Admin.AddAdmins"
+            android:name=".Admin.AddAdmins"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Admin.AddVets"
+            android:name=".Admin.AddVets"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Admin.AddEvents"
+            android:name=".Admin.AddEvents"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Admin.SelectShelterLocation"
+            android:name=".Admin.SelectShelterLocation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Shelter.ShelterMainActivity"
+            android:name=".Shelter.ShelterMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Shelter.ReceivedRequests"
+            android:name=".Shelter.ReceivedRequests"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.Authentication.StarterActivity"
+            android:name=".Authentication.StarterActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -78,25 +78,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.salmaali.app.petspot.User.ShowEventsActivity"
+            android:name=".User.ShowEventsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.User.ShowVetsActivity"
+            android:name=".User.ShowVetsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.User.ShowUsersActivity"
+            android:name=".User.ShowUsersActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.salmaali.app.petspot.User.UserProfileActivity"
+            android:name=".User.UserProfileActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.salmaali.app.petspot.User.PetDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.salmaali.app.petspot.User.EditProfileActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.salmaali.app.petspot.User.AddPet"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.salmaali.app.petspot.User.EditPet"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".User.PetDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.AddPet"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.EditPet"
+            android:screenOrientation="portrait" />
+        <activity android:name=".User.UserShowRequests"></activity>
     </application>
 
 </manifest>

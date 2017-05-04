@@ -28,7 +28,7 @@ public class PetDetailsActivity extends AppCompatActivity {
         final String userId = getIntent().getStringExtra("userID");
         final String petID = getIntent().getStringExtra("pet_id");
 
-        FirebaseUser user = LogInActivity.mFirebaseAuth.getCurrentUser();
+        FirebaseUser user = UserMainActivity.firebaseAuth.getCurrentUser();
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference petsDatabase = mFirebaseDatabase.getReference().child("Pets").child(userId).child(petID);
 

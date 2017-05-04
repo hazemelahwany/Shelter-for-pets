@@ -81,6 +81,7 @@ public class EditProfileActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (firstName.getText().toString().equals("") || lastName.getText().toString().equals("")) {
                     Toast.makeText(EditProfileActivity.this, R.string.check_all_fields, Toast.LENGTH_SHORT).show();
                 } else {

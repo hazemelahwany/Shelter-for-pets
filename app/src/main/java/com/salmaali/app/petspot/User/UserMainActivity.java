@@ -37,8 +37,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.UUID;
 
-import static com.salmaali.app.petspot.Authentication.LogInActivity.mFirebaseAuth;
-
 public class UserMainActivity extends AppCompatActivity {
 
     private static final int RC_SIGNIN = 1;
@@ -57,7 +55,7 @@ public class UserMainActivity extends AppCompatActivity {
     private Location currentLocation;
     private float minimumDistance;
     private String shelterID;
-    FirebaseAuth firebaseAuth;
+    protected static FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -70,7 +68,7 @@ public class UserMainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.sign_out_menu_item) {
-            LogInActivity.mFirebaseAuth.signOut();
+            firebaseAuth.signOut();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -94,6 +92,7 @@ public class UserMainActivity extends AppCompatActivity {
         ImageButton showVets = (ImageButton) findViewById(R.id.user_show_vets);
         ImageButton showUsers = (ImageButton) findViewById(R.id.user_show_users);
         ImageButton profile = (ImageButton) findViewById(R.id.user_profile);
+        ImageButton showRequest = (ImageButton) findViewById(R.id.user_show_requests);
 
         showEvents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +112,7 @@ public class UserMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(UserMainActivity.this, ShowUsersActivity.class);
-                i.putExtra("userID", mFirebaseAuth.getCurrentUser().getUid());
+                i.putExtra("userID", firebaseAuth.getCurrentUser().getUid());
                 startActivity(i);
             }
         });
@@ -122,8 +121,15 @@ public class UserMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(UserMainActivity.this, UserProfileActivity.class);
-                i.putExtra("userID", mFirebaseAuth.getCurrentUser().getUid());
+                i.putExtra("userID", firebaseAuth.getCurrentUser().getUid());
                 startActivity(i);
+            }
+        });
+
+        showRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserMainActivity.this, UserShowRequests.class));
             }
         });
 
@@ -182,7 +188,7 @@ public class UserMainActivity extends AppCompatActivity {
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
                     if (!user.isEmailVerified()) {
@@ -229,7 +235,7 @@ public class UserMainActivity extends AppCompatActivity {
                 finish();
             }
         } else if (requestCode == RC_EMAIL_VERIFY && resultCode == RESULT_OK) {
-            mFirebaseAuth.getCurrentUser().sendEmailVerification()
+            firebaseAuth.getCurrentUser().sendEmailVerification()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
