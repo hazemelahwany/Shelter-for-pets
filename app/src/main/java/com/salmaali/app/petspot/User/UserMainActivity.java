@@ -1,9 +1,12 @@
 package com.salmaali.app.petspot.User;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +18,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 import com.salmaali.app.petspot.Authentication.LogInActivity;
+import com.salmaali.app.petspot.Authentication.StarterActivity;
 import com.salmaali.app.petspot.DatabaseObjects.LostPet;
 import com.salmaali.app.petspot.R;
 import com.salmaali.app.petspot.TrackGPS;
@@ -42,6 +48,7 @@ public class UserMainActivity extends AppCompatActivity {
     private static final int RC_SIGNIN = 1;
     private static final int RC_EMAIL_VERIFY = 2;
     private static final int REQUEST_IMAGE_CAPTURE = 3;
+    private static final int MY_REQUEST_CODE = 4;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -68,7 +75,7 @@ public class UserMainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.sign_out_menu_item) {
-            firebaseAuth.signOut();
+            FirebaseAuth.getInstance().signOut();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -191,14 +198,19 @@ public class UserMainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    if (!user.isEmailVerified()) {
-                        startActivityForResult(new Intent(UserMainActivity.this, LogInActivity.class),
-                                RC_EMAIL_VERIFY);
-                    }
+
                 } else {
                     // User is signed out
-                    startActivityForResult(new Intent(UserMainActivity.this, LogInActivity.class),
-                            RC_SIGNIN);
+                    if (!StarterActivity.fb) {
+                        startActivityForResult(new Intent(UserMainActivity.this, LogInActivity.class),
+                                RC_SIGNIN);
+                    } else {
+                        if (AccessToken.getCurrentAccessToken() != null && com.facebook.Profile.getCurrentProfile() != null) {
+                            LoginManager.getInstance().logOut();
+                        }
+                        startActivityForResult(new Intent(UserMainActivity.this, StarterActivity.class),
+                                RC_SIGNIN);
+                    }
                 }
             }
         };
@@ -206,9 +218,43 @@ public class UserMainActivity extends AppCompatActivity {
     }
 
     private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                requestPermissions(new String[]{Manifest.permission.CAMERA},
+                        MY_REQUEST_CODE);
+            } else {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
+            }
+        } else {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == MY_REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Now user should be able to use camera
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
+            }
+            else {
+                // Your app will not have this permission. Turn off all functions
+                Toast.makeText(UserMainActivity.this, "Permission Denied", Toast.LENGTH_LONG).show();
+
+            }
         }
     }
 

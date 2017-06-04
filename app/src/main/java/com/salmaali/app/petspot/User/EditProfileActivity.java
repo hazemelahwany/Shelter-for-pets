@@ -114,11 +114,13 @@ public class EditProfileActivity extends AppCompatActivity {
                         });
                     } else {
                         if (volunteer.isChecked()) {
-                            User user = new User(firstName.getText().toString(), lastName.getText().toString(), "null", true);
-                            userDatabase.setValue(user);
+                            userDatabase.child("volunteer").setValue(true);
+                            userDatabase.child("firstName").setValue(firstName.getText().toString());
+                            userDatabase.child("lastName").setValue(lastName.getText().toString());
                         } else {
-                            User user = new User(firstName.getText().toString(), lastName.getText().toString(), "null", false);
-                            userDatabase.setValue(user);
+                            userDatabase.child("volunteer").setValue(false);
+                            userDatabase.child("firstName").setValue(firstName.getText().toString());
+                            userDatabase.child("lastName").setValue(lastName.getText().toString());
                         }
 
                     }

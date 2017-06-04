@@ -12,43 +12,53 @@
         android:scaleType="fitXY"
         android:src="@drawable/dog1"
         android:adjustViewBounds="true"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/imageView6"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/app_logo"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
-            android:id="@+id/imageView6" />
+            android:src="@drawable/app_logo" />
 
         <ImageButton
+            android:id="@+id/starter_signin"
             android:layout_width="280dp"
             android:layout_height="50dp"
-            android:src="@drawable/signin_button"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="115dp"
-            android:id="@+id/starter_signin"
             android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
             android:scaleType="centerCrop"
-            android:background="@android:color/transparent"/>
+            android:src="@drawable/signin_button"
+            android:layout_below="@+id/imageView6"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="47dp" />
 
         <ImageButton
             android:id="@+id/starter_signup"
             android:layout_width="280dp"
             android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
             android:src="@drawable/signup_button"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/starter_signin"
             android:layout_alignLeft="@+id/starter_signin"
             android:layout_alignStart="@+id/starter_signin"
-            android:layout_marginBottom="40dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:background="@android:color/transparent"/>
+            android:layout_marginTop="34dp" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/fb_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/starter_signup"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp" />
 
     </RelativeLayout>
 

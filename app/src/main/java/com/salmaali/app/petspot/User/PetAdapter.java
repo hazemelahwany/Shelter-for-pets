@@ -57,7 +57,10 @@ public class PetAdapter extends ArrayAdapter<String> {
             Glide.with(petPhoto.getContext())
                     .load(sArray[3])
                     .into(petPhoto);
-        }
+        } else {
+        Glide.clear(petPhoto);
+        petPhoto.setImageResource(R.drawable.pet);
+    }
         return convertView;
     }
 }

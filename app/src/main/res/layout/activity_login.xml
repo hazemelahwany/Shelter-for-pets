@@ -11,7 +11,7 @@
         android:layout_height="150dp"
         android:src="@drawable/app_logo"
         android:id="@+id/imageView"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="33dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -62,5 +62,6 @@
         android:textColor="@android:color/black"
         android:layout_below="@+id/login_button"
         android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

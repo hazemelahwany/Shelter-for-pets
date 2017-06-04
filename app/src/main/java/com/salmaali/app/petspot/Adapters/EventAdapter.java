@@ -97,7 +97,10 @@ public class EventAdapter extends ArrayAdapter<String> {
             Glide.with(viewEventPhoto.getContext())
                     .load(sArray[4])
                     .into(viewEventPhoto);
-        }
+        } else {
+            Glide.clear(viewEventPhoto);
+            viewEventPhoto.setImageResource(R.drawable.app_logo);
+    }
 
         return convertView;
     }

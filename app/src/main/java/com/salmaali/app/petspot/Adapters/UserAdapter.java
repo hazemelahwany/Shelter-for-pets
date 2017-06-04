@@ -90,6 +90,9 @@ public class UserAdapter extends ArrayAdapter<String> {
             Glide.with(userPic.getContext())
                     .load(sArray[1])
                     .into(userPic);
+        } else {
+            Glide.clear(userPic);
+            userPic.setImageResource(R.drawable.profile_icon);
         }
         return convertView;
     }

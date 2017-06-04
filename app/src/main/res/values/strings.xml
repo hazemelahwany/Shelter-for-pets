@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Pet Spot</string>
+    <string name="facebook_app_id">1896014867332535</string>
+    <string name="fb_login_protocol_scheme">fb1896014867332535</string>
 
     <!--Login Activity Strings-->
     <string name="login_button">Sign in</string>

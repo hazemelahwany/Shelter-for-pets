@@ -120,13 +120,8 @@ public class SignUpActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    if (user.isEmailVerified()) {
                         startActivityForResult(new Intent(SignUpActivity.this, UserMainActivity.class),
                                 RC_SIGNIN);
-                    } else {
-                        startActivityForResult(new Intent(SignUpActivity.this, LogInActivity.class),
-                                RC_EMAIL_VERIFY);
-                    }
                 } else {
                     // User is signed out
 

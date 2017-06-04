@@ -14,6 +14,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.salmaali.app.petspot.Admin.AdminActivity;
 import com.salmaali.app.petspot.R;
 import com.salmaali.app.petspot.Shelter.ShelterMainActivity;
@@ -63,6 +68,8 @@ public class LogInActivity extends AppCompatActivity {
         loginPassword = (EditText) findViewById(R.id.login_password);
         signin = (ImageButton) findViewById(R.id.login_button);
         forgotPassword = (TextView) findViewById(R.id.forgot_password);
+
+
 
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -181,23 +188,10 @@ public class LogInActivity extends AppCompatActivity {
                                 }
                             }
                             if (!shelterFlag) {
-                                if (user.isEmailVerified()) {
                                     progress.dismiss();
                                     startActivityForResult(new Intent(LogInActivity.this, UserMainActivity.class),
                                             RC_SIGNIN);
 
-                                } else {
-                                    user.sendEmailVerification()
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    progress.dismiss();
-                                                    Toast.makeText(LogInActivity.this,
-                                                            R.string.verify_email_toast, Toast.LENGTH_SHORT)
-                                                            .show();
-                                                }
-                                            });
-                                }
                             }
                         }
 
